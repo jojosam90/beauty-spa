@@ -370,6 +370,9 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   padding-bottom: 80px;
 }
 .hero__content { max-width: 560px; }
+.hero__visual-wrap {
+  position: relative;
+}
 .hero__visual {
   position: relative;
   height: 520px;
@@ -387,13 +390,13 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   display: block;
 }
 
-/* Starburst badge */
+/* Starburst badge — sits on the wrapper (outside overflow:hidden card) */
 .hero__badge {
   position: absolute;
-  bottom: 24px;
-  right: 24px;
-  width: 144px;
-  height: 144px;
+  bottom: -28px;
+  right: -28px;
+  width: 170px;
+  height: 170px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,7 +414,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 .hero__badge span {
   position: relative;
   z-index: 1;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: #fff;
   font-family: var(--font-body);
@@ -422,7 +425,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   pointer-events: none;
 }
 :lang(zh-Hans) .hero__badge span {
-  font-size: 15px;
+  font-size: 16px;
   text-transform: none;
   letter-spacing: 1px;
   line-height: 1.6;
@@ -431,9 +434,9 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   to { transform: rotate(360deg); }
 }
 @media (max-width: 768px) {
-  .hero__badge { width: 116px; height: 116px; bottom: 16px; right: 16px; }
-  .hero__badge span { font-size: 12px; }
-  :lang(zh-Hans) .hero__badge span { font-size: 13px; }
+  .hero__badge { width: 136px; height: 136px; bottom: -20px; right: -20px; }
+  .hero__badge span { font-size: 13px; }
+  :lang(zh-Hans) .hero__badge span { font-size: 14px; }
 }
 .hero__visual::after {
   content: '';
