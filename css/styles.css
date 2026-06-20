@@ -1092,8 +1092,8 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 }
 .contact__icon svg { display: block; }
 .contact__item h4 { font-size: 14px; font-weight: 600; color: #f5e6df; margin-bottom: 3px; }
-.contact__item p  { font-size: 13px; font-weight: 600; color: rgba(245,230,223,.65); line-height: 1.6; }
-.contact__item a  { font-size: 13px; font-weight: 600; color: rgba(245,230,223,.65); }
+.contact__item p  { font-size: 13px; font-weight: 600; color: #fff; line-height: 1.6; }
+.contact__item a  { font-size: 13px; font-weight: 600; color: #fff; }
 .contact__item a:hover { color: #f5e6df; }
 
 .contact__socials { display: flex; gap: 10px; }
