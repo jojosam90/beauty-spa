@@ -19,9 +19,9 @@
    CSS Custom Properties
    ========================================================== */
 :root {
-  --primary:        #B07D6E;
-  --primary-light:  #D4A5A5;
-  --primary-dark:   #8B6058;
+  --primary:        #CC2929;
+  --primary-light:  #E87070;
+  --primary-dark:   #9B1A1A;
   --gold:           #C9A45C;
   --gold-light:     #E8D5A3;
   --dark:           #1d1d1b;   /* EstheClinic brand dark (from logo SVG) */
@@ -31,8 +31,8 @@
   --text-faint:     #9a9a94;
   --white:          #ffffff;
   --bg:             #ffffff;
-  --bg-soft:        #FAF7F5;
-  --border:         #E8E0DB;
+  --bg-soft:        #FDF8F0;
+  --border:         #EAD9C8;
 
   /* EstheClinic typography — Cormorant Garamond (headings) + Montserrat (body) */
   --font-head:  'Cormorant Garamond', Georgia, 'Times New Roman', serif;
@@ -1298,7 +1298,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 /* ==========================================================
    Reviews Carousel
    ========================================================== */
-.reviews-section { overflow: hidden; background: #f2e8df; padding-top: var(--sp); padding-bottom: var(--sp); }
+.reviews-section { overflow: hidden; background: #F5ECD9; padding-top: var(--sp); padding-bottom: var(--sp); }
 .reviews-section .section__head { margin-bottom: 48px; }
 
 .rv-carousel {
@@ -1315,8 +1315,8 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   z-index: 2;
   pointer-events: none;
 }
-.rv-carousel::before { left: 0;  background: linear-gradient(to right, #f2e8df 0%, transparent 100%); }
-.rv-carousel::after  { right: 0; background: linear-gradient(to left,  #f2e8df 0%, transparent 100%); }
+.rv-carousel::before { left: 0;  background: linear-gradient(to right, #F5ECD9 0%, transparent 100%); }
+.rv-carousel::after  { right: 0; background: linear-gradient(to left,  #F5ECD9 0%, transparent 100%); }
 
 .rv-track {
   display: flex;
