@@ -386,6 +386,55 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   object-position: center top;
   display: block;
 }
+
+/* Starburst badge */
+.hero__badge {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 112px;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 5;
+}
+.hero__badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary);
+  clip-path: polygon(50% 0%,55% 18%,69% 6%,63% 23%,80% 17%,68% 30%,87% 32%,72% 40%,87% 50%,72% 60%,87% 68%,68% 70%,80% 83%,63% 77%,69% 94%,55% 82%,50% 100%,45% 82%,31% 94%,37% 77%,20% 83%,32% 70%,13% 68%,28% 60%,13% 50%,28% 40%,13% 32%,32% 30%,20% 17%,37% 23%,31% 6%,45% 18%);
+  animation: badge-spin 14s linear infinite;
+}
+.hero__badge span {
+  position: relative;
+  z-index: 1;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0,0,0,.2);
+  pointer-events: none;
+}
+:lang(zh-Hans) .hero__badge span {
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+@keyframes badge-spin {
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 768px) {
+  .hero__badge { width: 90px; height: 90px; bottom: 16px; right: 16px; }
+  .hero__badge span { font-size: 10px; }
+  :lang(zh-Hans) .hero__badge span { font-size: 11px; }
+}
 .hero__visual::after {
   content: '';
   position: absolute;
