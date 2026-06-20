@@ -749,8 +749,12 @@
 
   function getPageKey() {
     const p = window.location.pathname.replace(/\\/g, '/');
+    // Old .html style: /treatments/head-eye-spa.html
     const m = p.match(/([\w-]+\/[\w-]+)\.html/);
-    return m ? m[1] : null;
+    if (m) return m[1];
+    // Clean URL style: /treatments/head-eye-spa/
+    const m2 = p.match(/\/([\w-]+\/[\w-]+)\/?$/);
+    return m2 ? m2[1] : null;
   }
 
   /* Init on DOM ready */
