@@ -407,7 +407,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--primary);
+  background: var(--gold);
   clip-path: polygon(50% 0%,55% 18%,69% 6%,63% 23%,80% 17%,68% 30%,87% 32%,72% 40%,87% 50%,72% 60%,87% 68%,68% 70%,80% 83%,63% 77%,69% 94%,55% 82%,50% 100%,45% 82%,31% 94%,37% 77%,20% 83%,32% 70%,13% 68%,28% 60%,13% 50%,28% 40%,13% 32%,32% 30%,20% 17%,37% 23%,31% 6%,45% 18%);
   animation: badge-spin 14s linear infinite;
 }
