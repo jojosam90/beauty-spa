@@ -1320,15 +1320,17 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 
 .rv-track {
   display: flex;
+  flex-wrap: nowrap;
   gap: 24px;
   width: max-content;
+  will-change: transform;
   animation: rv-scroll 60s linear infinite;
 }
 .rv-track:hover { animation-play-state: paused; }
 
 @keyframes rv-scroll {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .rv-card {
