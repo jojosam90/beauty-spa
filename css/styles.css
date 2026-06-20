@@ -1412,6 +1412,13 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   .rv-track { animation: none; }
 }
 
+@media (max-width: 768px) {
+  .rv-carousel::before,
+  .rv-carousel::after { width: 36px; }
+  .rv-card { flex: 0 0 270px; min-width: 270px; }
+  .rv-track { animation-duration: 52s; }
+}
+
 /* ==========================================================
    Responsive — 1024 px (tablet breakpoint)
    ========================================================== */
