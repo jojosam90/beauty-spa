@@ -149,9 +149,9 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   50%, 100% { left: 130%; }
 }
 .btn--primary {
-  background: var(--primary);
+  background: var(--gold);
   color: var(--white);
-  border-color: var(--primary);
+  border-color: var(--gold);
   position: relative;
   overflow: hidden;
   animation: btn-heartbeat 2.4s ease-in-out infinite;
@@ -168,10 +168,10 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   pointer-events: none;
 }
 .btn--primary:hover {
-  background: var(--primary-dark);
-  border-color: var(--primary-dark);
+  background: #a8883e;
+  border-color: #a8883e;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(176,125,110,.35);
+  box-shadow: 0 8px 24px rgba(201,164,92,.4);
   animation: none;
 }
 .btn--primary:hover::after { display: none; }
