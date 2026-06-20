@@ -21,15 +21,15 @@
       <ul class="nav__menu" id="navMenu">
 
         <li class="nav__item">
-          <a href="${bp}treatments/head-eye-spa.html" class="nav__link" data-i18n="nav_head_eye">Head &amp; Eye Spa</a>
+          <a href="${bp}treatments/head-eye-spa/" class="nav__link" data-i18n="nav_head_eye">Head &amp; Eye Spa</a>
         </li>
 
         <li class="nav__item">
-          <a href="${bp}treatments/facial-spa.html" class="nav__link" data-i18n="nav_facial">Facial Spa</a>
+          <a href="${bp}treatments/facial-spa/" class="nav__link" data-i18n="nav_facial">Facial Spa</a>
         </li>
 
         <li class="nav__item">
-          <a href="${bp}treatments/body-mud-therapy.html" class="nav__link" data-i18n="nav_body_mud">Body Mud Therapy</a>
+          <a href="${bp}treatments/body-mud-therapy/" class="nav__link" data-i18n="nav_body_mud">Body Mud Therapy</a>
         </li>
 
         <li class="nav__item">
@@ -62,9 +62,9 @@
           <div class="footer__col">
             <h4 data-i18n="ft_col_treat">Treatments</h4>
             <ul>
-              <li><a href="${bp}treatments/head-eye-spa.html" data-i18n="nav_head_eye">Head &amp; Eye Spa</a></li>
-              <li><a href="${bp}treatments/facial-spa.html" data-i18n="nav_facial">Facial Spa</a></li>
-              <li><a href="${bp}treatments/body-mud-therapy.html" data-i18n="nav_body_mud">Body Mud Therapy</a></li>
+              <li><a href="${bp}treatments/head-eye-spa/" data-i18n="nav_head_eye">Head &amp; Eye Spa</a></li>
+              <li><a href="${bp}treatments/facial-spa/" data-i18n="nav_facial">Facial Spa</a></li>
+              <li><a href="${bp}treatments/body-mud-therapy/" data-i18n="nav_body_mud">Body Mud Therapy</a></li>
             </ul>
           </div>
           <div class="footer__col">
