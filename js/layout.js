@@ -13,7 +13,7 @@
   <header class="header" id="header">
     <nav class="nav container">
       <a href="${bp}index.html" class="nav__logo">
-        <span class="logo-estre">Esthe</span><span class="logo-clinic">Clinic</span>
+        <span class="logo-estre">EC</span><span class="logo-clinic"> Centre</span>
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -56,7 +56,7 @@
       <div class="container">
         <div class="footer__grid">
           <div class="footer__brand">
-            <a href="${bp}index.html" class="footer__logo"><span>Esthe</span>Clinic</a>
+            <a href="${bp}index.html" class="footer__logo"><span>EC</span> Centre</a>
             <p data-i18n="ft_tagline">Over 10 years of trusted facial &amp; spa expertise in Singapore.</p>
           </div>
           <div class="footer__col">
