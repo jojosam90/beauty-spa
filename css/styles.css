@@ -1243,7 +1243,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 /* ==========================================================
    Reviews Carousel
    ========================================================== */
-.reviews-section { overflow: hidden; }
+.reviews-section { overflow: hidden; background: #f2e8df; padding-top: var(--sp); padding-bottom: var(--sp); }
 .reviews-section .section__head { margin-bottom: 48px; }
 
 .rv-carousel {
@@ -1260,8 +1260,8 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   z-index: 2;
   pointer-events: none;
 }
-.rv-carousel::before { left: 0;  background: linear-gradient(to right, #fff 0%, transparent 100%); }
-.rv-carousel::after  { right: 0; background: linear-gradient(to left,  #fff 0%, transparent 100%); }
+.rv-carousel::before { left: 0;  background: linear-gradient(to right, #f2e8df 0%, transparent 100%); }
+.rv-carousel::after  { right: 0; background: linear-gradient(to left,  #f2e8df 0%, transparent 100%); }
 
 .rv-track {
   display: flex;
