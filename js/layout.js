@@ -146,6 +146,17 @@
     if (!isOpen) item.classList.add('open');
   });
 
+  /* ---- WhatsApp click tracking (GA4) --------------------- */
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[href*="wa.me"]');
+    if (link && typeof gtag === 'function') {
+      gtag('event', 'whatsapp_click', {
+        link_url: link.href,
+        link_type: link.classList.contains('wa-float') ? 'floating_button' : 'contact_section'
+      });
+    }
+  });
+
   /* ---- Smooth scroll for on-page hash links -------------- */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
