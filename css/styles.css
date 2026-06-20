@@ -1168,8 +1168,9 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 8px;
+  color: #fff;
 }
-.footer__logo span { color: var(--primary-light); }
+.footer__logo span { color: #fff; }
 .footer__brand p { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,.4); line-height: 1.8; margin-bottom: 22px; }
 
 .footer__socials { display: flex; gap: 10px; }
