@@ -1322,7 +1322,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   display: flex;
   gap: 24px;
   width: max-content;
-  animation: rv-scroll 38s linear infinite;
+  animation: rv-scroll 60s linear infinite;
 }
 .rv-track:hover { animation-play-state: paused; }
 
@@ -1416,7 +1416,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   .rv-carousel::before,
   .rv-carousel::after { width: 36px; }
   .rv-card { flex: 0 0 270px; min-width: 270px; }
-  .rv-track { animation-duration: 52s; }
+  .rv-track { animation-duration: 80s; }
 }
 
 /* ==========================================================
