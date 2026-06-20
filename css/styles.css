@@ -1146,6 +1146,9 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 .form__grp input::placeholder,
 .form__grp textarea::placeholder { color: var(--text-faint); }
 .form__grp textarea { resize: vertical; min-height: 100px; }
+.form__tel-wrap { display: flex; align-items: center; gap: 8px; }
+.form__tel-prefix { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; }
+.form__tel-wrap input { flex: 1; }
 
 /* ==========================================================
    Footer
