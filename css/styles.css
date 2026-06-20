@@ -1345,6 +1345,13 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   font-size: 12px;
   color: var(--text-muted);
 }
+.rv-card__date {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .rv-track { animation: none; }
