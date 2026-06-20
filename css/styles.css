@@ -24,8 +24,8 @@
   --primary-dark:   #9B1A1A;
   --gold:           #C9A45C;
   --gold-light:     #E8D5A3;
-  --dark:           #1d1d1b;   /* EstheClinic brand dark (from logo SVG) */
-  --dark-alt:       #2a2a28;
+  --dark:           #6b4c20;
+  --dark-alt:       #7a5c2e;
   --text:           #1d1d1b;
   --text-muted:     #5a5a55;
   --text-faint:     #9a9a94;
@@ -340,7 +340,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(145deg, #130808 0%, #2a1010 25%, #3a1e1e 55%, #1a1a2e 100%);
+  background: linear-gradient(145deg, #7a5c2e 0%, #9b7a40 30%, #b8954d 60%, #8a6a30 100%);
   z-index: -2;
 }
 .hero__bg::before {
@@ -348,8 +348,8 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 65% 85% at 30% 50%, rgba(176,125,110,.22) 0%, transparent 70%),
-    radial-gradient(ellipse 45% 65% at 80% 75%, rgba(201,164,92,.08) 0%, transparent 60%);
+    radial-gradient(ellipse 65% 85% at 30% 50%, rgba(255,220,140,.15) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 65% at 80% 75%, rgba(201,164,92,.12) 0%, transparent 60%);
 }
 .hero__overlay {
   position: absolute;
@@ -1063,7 +1063,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 .section.contact {
   padding: 48px 0;
   scroll-margin-top: 76px;
-  background: linear-gradient(135deg, #2e1a16 0%, #3d2420 40%, #2a1a18 100%);
+  background: linear-gradient(135deg, #7a5c2e 0%, #9b7a40 40%, #8a6a30 100%);
 }
 .section.contact .section__head { margin-bottom: 20px; }
 .section.contact .section__title { color: #f5e6df; }
