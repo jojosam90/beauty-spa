@@ -232,8 +232,8 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   gap: 24px;
 }
 .nav__logo { flex-shrink: 0; font-family: var(--font-head); font-size: 22px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; }
-.logo-estre  { color: #fff; }
-.logo-clinic { color: #fff; }
+.logo-estre  { color: var(--primary); }
+.logo-clinic { color: var(--dark); }
 
 .nav__menu {
   display: flex;
