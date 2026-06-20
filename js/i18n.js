@@ -84,6 +84,21 @@
       fl_loc:'Preferred Location', fl_treat:'Treatment Interest', fl_msg:'Message',
       fl_submit:'Send Message', fl_sel_c:'Select a clinic', fl_sel_t:'Select a treatment',
       btn_consult:'Book Free Consultation',
+      // Reviews carousel
+      rv_title:'What Our Clients Say',
+      rv_sub:'Real reviews from our valued clients across Singapore',
+      rv1_text:'"The head & eye spa was incredibly relaxing. My tension headaches disappeared after just one session. Therapists are so skilled — truly a hidden gem!"',
+      rv1_name:'Sarah T.', rv1_role:'Marketing Manager',
+      rv2_text:'"Best facial spa in Singapore! My skin felt deeply hydrated and glowing for weeks. The team listened to my concerns and customised everything perfectly."',
+      rv2_name:'Michelle L.', rv2_role:'Teacher',
+      rv3_text:'"The body mud therapy is absolutely divine. Warm, soothing and my muscles felt completely rejuvenated. I left feeling like a brand new person. Will be back!"',
+      rv3_name:'Jennifer K.', rv3_role:'Entrepreneur',
+      rv4_text:'"Visible results after just 3 sessions of facial spa — skin tone evened out noticeably. Professional team with a warm, welcoming approach every visit."',
+      rv4_name:'Rachel W.', rv4_role:'Accountant',
+      rv5_text:'"Came as a birthday treat and it exceeded every expectation. The ambience is so serene and the staff so thoughtful. Highly recommend to anyone!"',
+      rv5_name:'Amanda C.', rv5_role:'HR Executive',
+      rv6_text:'"Knowledgeable staff who took time to fully understand my needs before starting. Results were immediate. An outstanding experience — 10 out of 10!"',
+      rv6_name:'David L.', rv6_role:'Software Engineer',
       // About section float badge
       ab_badge_lbl:'Years of Excellence',
       // Learn more link
@@ -176,6 +191,21 @@
       fl_loc:'首选门店', fl_treat:'疗程兴趣', fl_msg:'留言',
       fl_submit:'发送消息', fl_sel_c:'选择诊所', fl_sel_t:'选择疗程',
       btn_consult:'预约免费咨询',
+      // Reviews carousel
+      rv_title:'客户真实评价',
+      rv_sub:'来自新加坡各地客户的真实体验分享',
+      rv1_text:'"头眼舒缓疗程非常放松，做完第一次紧张性头痛就消失了。治疗师技术高超、贴心周到——真的是个隐藏宝地！"',
+      rv1_name:'Sarah T.', rv1_role:'市场经理',
+      rv2_text:'"新加坡最好的面部SPA！肌肤水润光泽，效果持续数周。团队认真了解肌肤问题，定制了完美护理方案。"',
+      rv2_name:'Michelle L.', rv2_role:'教师',
+      rv3_text:'"身体泥浆疗法真的太好了！温暖舒缓，全身肌肉完全放松，感觉焕然一新。一定会再来！"',
+      rv3_name:'Jennifer K.', rv3_role:'创业者',
+      rv4_text:'"做了3次面部护理后肤色明显改善，效果真实可见。团队非常专业，每次到访都热情友好。"',
+      rv4_name:'Rachel W.', rv4_role:'会计师',
+      rv5_text:'"生日犒劳自己来这里，体验超出所有预期！环境宁静，工作人员体贴周到。强烈推荐！"',
+      rv5_name:'Amanda C.', rv5_role:'人力资源主管',
+      rv6_text:'"工作人员专业且知识丰富，开始前认真了解我的需求。效果立竿见影，绝佳体验——满分推荐！"',
+      rv6_name:'David L.', rv6_role:'软件工程师',
       // About section float badge
       ab_badge_lbl:'年卓越经验',
       // Learn more link
