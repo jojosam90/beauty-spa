@@ -30,7 +30,7 @@
       ft_tagline:"Over 10 years of trusted facial & spa expertise in Singapore.",
       ft_col_treat:'Treatments', ft_col_locs:'Locations',
       ft_col_company:'Company', ft_col_contact:'Contact',
-      ft_hrs1:'Daily: 10am–10.30pm (By appointment only)',
+      ft_hrs1:'Daily: 10.30am - 10.30pm (By appointment only)',
       ft_copy:'© 2024 EstheClinic. All rights reserved.',
       ft_terms:'Terms & Conditions', ft_privacy:'Privacy Policy',
       // Homepage
@@ -79,7 +79,7 @@
       ct_tag:'Get In Touch', ct_title:'Book a Consultation',
       ct_sub:'Ready to start your beauty journey? Contact us today for a free consultation.',
       ct_call:'Call Us', ct_wa:'WhatsApp', ct_email:'Email', ct_hrs:'Operating Hours',
-      ct_hrs_v:'Daily: 10am–10.30pm (By appointment only)',
+      ct_hrs_v:'Daily: 10.30am - 10.30pm<br>By appointment only',
       fl_name:'Full Name *', fl_email:'Email *', fl_phone:'Phone',
       fl_loc:'Preferred Location', fl_treat:'Treatment Interest', fl_msg:'Message',
       fl_submit:'Send Message', fl_sel_c:'Select a clinic', fl_sel_t:'Select a treatment',

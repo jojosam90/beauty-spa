@@ -72,7 +72,7 @@
             <ul>
               <li>Blk 8, Selegie Road, #01-06, Singapore 180008</li>
               <li>+65 8941 0482</li>
-              <li data-i18n="ft_hrs1">Daily: 10am–10.30pm (By appointment only)</li>
+              <li data-i18n="ft_hrs1">Daily: 10.30am - 10.30pm (By appointment only)</li>
             </ul>
           </div>
         </div>
