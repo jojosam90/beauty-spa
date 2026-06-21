@@ -34,7 +34,7 @@
         </li>
 
         <li class="nav__item">
-          <a href="${bp}index.html#contact" class="nav__link" data-i18n="nav_contact">Contact</a>
+          <a href="${bp ? bp + 'index.html' : ''}#contact" class="nav__link" data-i18n="nav_contact">Contact</a>
         </li>
 
         <!-- Language switcher -->
@@ -44,7 +44,7 @@
         </li>
 
         <li class="nav__item nav__item--cta">
-          <a href="${bp}index.html#contact" class="btn btn--primary" data-i18n="btn_book">Book Now</a>
+          <a href="${bp ? bp + 'index.html' : ''}#contact" class="btn btn--primary" data-i18n="btn_book">Book Now</a>
         </li>
       </ul>
     </nav>
