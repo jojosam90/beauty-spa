@@ -81,7 +81,7 @@
     </div>
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p data-i18n="ft_copy">&copy; 2026 EstheClinic. All rights reserved.</p>
+        <p data-i18n="ft_copy">&copy; 2026 EC Centre. All rights reserved.</p>
         <div class="footer__legal">
           <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593; Back to top</button>
         </div>

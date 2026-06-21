@@ -31,7 +31,7 @@
       ft_col_treat:'Treatments', ft_col_locs:'Locations',
       ft_col_company:'Company', ft_col_contact:'Contact',
       ft_hrs1:'Daily: 10.30am - 10.30pm (By appointment only)',
-      ft_copy:'© 2024 EstheClinic. All rights reserved.',
+      ft_copy:'© 2026 EC Centre. All rights reserved.',
       ft_terms:'Terms & Conditions', ft_privacy:'Privacy Policy',
       // Homepage
       h_badge:"★ Singapore's #1 Multi-Award-Winning",
@@ -139,7 +139,7 @@
       ft_col_treat:'疗程项目', ft_col_locs:'门店地址',
       ft_col_company:'公司介绍', ft_col_contact:'联系我们',
       ft_hrs1:'每日：上午10点 – 晚上10点30分（须预约）',
-      ft_copy:'© 2024 EstheClinic. 版权所有。',
+      ft_copy:'© 2026 EC Centre. 版权所有。',
       ft_terms:'条款与条件', ft_privacy:'隐私政策',
       // Homepage
       h_badge:'★ 新加坡第一多奖美容诊所',
