@@ -1,4 +1,4 @@
-/* ==========================================================
+﻿/* ==========================================================
    layout.js — shared header + footer injected on every page
    Set window.BASE_PATH before including this script:
      index.html  → BASE_PATH = ''
@@ -21,11 +21,11 @@
       <ul class="nav__menu" id="navMenu">
 
         <li class="nav__item">
-          <a href="${bp}treatments/head-eye-spa/" class="nav__link" data-i18n="nav_head_eye">Head &amp; Eye Spa</a>
+          <a href="${bp}treatments/head-eye-spa/" class="nav__link" data-i18n="nav_head_eye">Head &amp; Eye Treatment</a>
         </li>
 
         <li class="nav__item">
-          <a href="${bp}treatments/facial-spa/" class="nav__link" data-i18n="nav_facial">Facial Spa</a>
+          <a href="${bp}treatments/facial-spa/" class="nav__link" data-i18n="nav_facial">Facial Treatment</a>
         </li>
 
         <li class="nav__item">
@@ -57,13 +57,13 @@
         <div class="footer__grid">
           <div class="footer__brand">
             <a href="${bp}index.html" class="footer__logo"><span>EC</span> Centre</a>
-            <p data-i18n="ft_tagline">Over 10 years of trusted facial &amp; spa expertise in Singapore.</p>
+            <p data-i18n="ft_tagline">Over 10 years of trusted facial &amp; treatment expertise in Singapore.</p>
           </div>
           <div class="footer__col">
             <h4 data-i18n="ft_col_treat">Treatments</h4>
             <ul>
-              <li><a href="${bp}treatments/head-eye-spa/" data-i18n="nav_head_eye">Head &amp; Eye Spa</a></li>
-              <li><a href="${bp}treatments/facial-spa/" data-i18n="nav_facial">Facial Spa</a></li>
+              <li><a href="${bp}treatments/head-eye-spa/" data-i18n="nav_head_eye">Head &amp; Eye Treatment</a></li>
+              <li><a href="${bp}treatments/facial-spa/" data-i18n="nav_facial">Facial Treatment</a></li>
               <li><a href="${bp}treatments/body-mud-therapy/" data-i18n="nav_body_mud">Body Mud Therapy</a></li>
             </ul>
           </div>

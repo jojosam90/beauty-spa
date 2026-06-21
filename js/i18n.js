@@ -1,4 +1,4 @@
-/* ==========================================================
+﻿/* ==========================================================
    i18n.js — EN / ZH bilingual engine
    Usage: set window.BASE_PATH before this script loads.
    Lang stored in localStorage key "ec_lang".
@@ -13,8 +13,8 @@
     en: {
       // Nav
       nav_treatments:'Treatments',
-      nav_head_eye:'Head & Eye Spa',
-      nav_facial:'Facial Spa', nav_facial_hydrate:'Hydrating & Brightening',
+      nav_head_eye:'Head & Eye Treatment',
+      nav_facial:'Facial Treatment', nav_facial_hydrate:'Hydrating & Brightening',
       nav_facial_smooth:'Smooth Skin Conditioning', nav_facial_relax:'Natural Facial Relaxation',
       nav_facial_contour:'Soft Contour Nursing',
       nav_body_mud:'Body Mud Therapy', nav_body_warm:'Warm Body Pampering',
@@ -27,7 +27,7 @@
       nav_tech:'Technologies', nav_reviews:'Reviews', nav_blog:'Blog',
       nav_faq:'FAQ', nav_contact:'Contact', btn_book:'Book Now',
       // Footer
-      ft_tagline:"Over 10 years of trusted facial & spa expertise in Singapore.",
+      ft_tagline:"Over 10 years of trusted facial & treatment expertise in Singapore.",
       ft_col_treat:'Treatments', ft_col_locs:'Locations',
       ft_col_company:'Company', ft_col_contact:'Contact',
       ft_hrs1:'Daily: 10.30am - 10.30pm (By appointment only)',
@@ -36,14 +36,14 @@
       // Homepage
       h_badge:"★ Singapore's #1 Multi-Award-Winning",
       h_title:'Beautiful Skin<br><em>Starts Here</em>',
-      h_sub:"Over 10 years of trusted facial &amp; spa expertise in Singapore.",
+      h_sub:"Over 10 years of trusted facial &amp; treatment expertise in Singapore.",
       h_s_yrs:'Years Experience', h_s_cli:'Happy Clients',
       h_s_loc:'Clinic Locations', h_s_aw:'Awards Won',
       h_btn1:'Discover Our Treatments', h_btn2:'Free Consultation',
       tr_tag:'Our Expertise', tr_title:'Our Treatments',
       tr_sub:'Discover our comprehensive range of advanced aesthetic treatments designed for visible results from the very first session.',
-      t1_h:'Head & Eye Spa', t1_p:'Professional head care and eye relaxation treatments. Rebalance your body, refresh your skin, reconnect with your best self.', t1_a:'Discover',
-      t2_h:'Facial Spa', t2_p:'Gentle facial pampering with skin brightening, deep hydration, smooth conditioning and natural relaxation for daily skin care.', t2_a:'Discover',
+      t1_h:'Head & Eye Treatment', t1_p:'Professional head care and eye relaxation treatments. Rebalance your body, refresh your skin, reconnect with your best self.', t1_a:'Discover',
+      t2_h:'Facial Treatment', t2_p:'Gentle facial pampering with skin brightening, deep hydration, smooth conditioning and natural relaxation for daily skin care.', t2_a:'Discover',
       t3_h:'Body Mud Therapy', t3_p:'Whole body mud therapy to warm and relax stiff muscles, comfort tired limbs and restore full body vitality.', t3_a:'Discover',
       t4_h:'Body Shaping', t4_p:'Advanced body shaping treatments to sculpt, tone and firm your body contours for a confident new you.', t4_a:'Discover',
       pg_tag:'Signature Collection', pg_title:'Our Signature Programs',
@@ -88,13 +88,13 @@
       // Reviews carousel
       rv_title:'What Our Clients Say',
       rv_sub:'Real reviews from our valued clients across Singapore',
-      rv1_text:'"The head & eye spa was incredibly relaxing. My tension headaches disappeared after just one session. Therapists are so skilled — truly a hidden gem!"',
+      rv1_text:'"The head & eye treatment was incredibly relaxing. My tension headaches disappeared after just one session. Therapists are so skilled — truly a hidden gem!"',
       rv1_name:'Sarah T.', rv1_role:'Marketing Manager',
-      rv2_text:'"Best facial spa in Singapore! My skin felt deeply hydrated and glowing for weeks. The team listened to my concerns and customised everything perfectly."',
+      rv2_text:'"Best facial treatment in Singapore! My skin felt deeply hydrated and glowing for weeks. The team listened to my concerns and customised everything perfectly."',
       rv2_name:'Michelle L.', rv2_role:'Teacher',
       rv3_text:'"The body mud therapy is absolutely divine. Warm, soothing and my muscles felt completely rejuvenated. I left feeling like a brand new person. Will be back!"',
       rv3_name:'Jennifer K.', rv3_role:'Entrepreneur',
-      rv4_text:'"Visible results after just 3 sessions of facial spa — skin tone evened out noticeably. Professional team with a warm, welcoming approach every visit."',
+      rv4_text:'"Visible results after just 3 sessions of facial treatment — skin tone evened out noticeably. Professional team with a warm, welcoming approach every visit."',
       rv4_name:'Rachel W.', rv4_role:'Accountant',
       rv5_text:'"Came as a birthday treat and it exceeded every expectation. The ambience is so serene and the staff so thoughtful. Highly recommend to anyone!"',
       rv5_name:'Amanda C.', rv5_role:'HR Executive',
