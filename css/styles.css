@@ -231,7 +231,8 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   height: 76px;
   gap: 24px;
 }
-.nav__logo { flex-shrink: 0; font-family: var(--font-head); font-size: 22px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; }
+.nav__logo { flex-shrink: 0; display: flex; align-items: center; gap: 8px; font-family: var(--font-head); font-size: 22px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; }
+.nav__logo-img { height: 44px; width: auto; display: block; }
 .logo-estre  { color: var(--primary); }
 .logo-clinic { color: var(--dark); }
 

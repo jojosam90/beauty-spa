@@ -13,6 +13,7 @@
   <header class="header" id="header">
     <nav class="nav container">
       <a href="${bp}index.html" class="nav__logo">
+        <img src="${bp}images/fb_logo5.png" alt="EB Centre" class="nav__logo-img">
         <span class="logo-estre">EC</span><span class="logo-clinic"> Centre</span>
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
