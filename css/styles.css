@@ -1423,6 +1423,87 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   .rv-track { animation-duration: 80s; }
 }
 
+/* ---- Write-a-Review button row ---- */
+.rv-write-wrap {
+  text-align: center;
+  padding: 28px 0 0;
+}
+
+/* ---- Review modal ---- */
+.rv-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rv-modal[hidden] { display: none; }
+.rv-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.rv-modal__box {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 36px 36px;
+  width: 92%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1;
+  box-shadow: 0 24px 64px rgba(0,0,0,.18);
+}
+.rv-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px;
+}
+.rv-modal__close:hover { color: var(--dark); }
+.rv-modal__title {
+  font-family: var(--font-head);
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0 0 4px;
+  color: var(--dark);
+}
+.rv-modal__sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 22px;
+}
+.rv-modal__stars {
+  display: flex;
+  gap: 4px;
+  font-size: 34px;
+  color: #d1d5db;
+  cursor: pointer;
+  margin-bottom: 22px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rv-modal__stars span { transition: color .15s; }
+.rv-modal__stars span.active { color: #f59e0b; }
+.rv-modal__success {
+  text-align: center;
+  padding: 20px 0;
+  display: none;
+}
+.rv-modal__success .rv-success-icon { font-size: 48px; }
+.rv-modal__success p { margin: 12px 0 0; color: var(--text-muted); font-size: 14px; }
+.rv-modal__success h4 { font-family: var(--font-head); font-size: 22px; font-weight: 400; margin: 8px 0 0; }
+
 /* ==========================================================
    Responsive — 1024 px (tablet breakpoint)
    ========================================================== */
