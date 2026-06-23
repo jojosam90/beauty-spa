@@ -74,7 +74,7 @@
   <link rel="icon" type="image/png" href="/images/fb_logo5.png">`r`n  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=38">
+  <link rel="stylesheet" href="css/styles.css?v=39">
 </head>
 <body>
 
@@ -365,7 +365,10 @@
       setTimeout(closeReviewModal, 2800);
     };
 
-    /* ---- Carousel helpers ---- */
+    /* ---- Helpers ---- */
+    function esc(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/”/g,'&quot;').replace(/'/g,'&#39;');
+    }
     function starHTML(n) {
       var s = '';
       for (var i = 1; i <= 5; i++) s += (i <= n ? '&#9733;' : '&#9734;');
@@ -374,11 +377,11 @@
     function makeCardHTML(r, hidden) {
       return '<article class=”rv-card”' + (hidden ? ' aria-hidden=”true”' : '') + '>' +
         '<div class=”rv-card__top”><span class=”rv-card__stars”>' + starHTML(r.rating) + '</span></div>' +
-        '<p class=”rv-card__text”>”' + r.text + '”</p>' +
+        '<p class=”rv-card__text”>“' + esc(r.text) + '”</p>' +
         '<div class=”rv-card__author”>' +
-          '<div class=”rv-card__avatar”>' + r.initials + '</div>' +
-          '<div class=”rv-card__info”><strong>' + r.name + '</strong></div>' +
-          '<span class=”rv-card__date”>' + r.date + '</span>' +
+          '<div class=”rv-card__avatar”>' + esc(r.initials) + '</div>' +
+          '<div class=”rv-card__info”><strong>' + esc(r.name) + '</strong></div>' +
+          '<span class=”rv-card__date”>' + esc(r.date) + '</span>' +
         '</div></article>';
     }
     function addCardToCarousel(r) {
@@ -431,13 +434,13 @@
         return;
       }
       list.innerHTML = pending.map(function(r) {
-        return '<div class=”rv-admin-item” data-id=”' + r.id + '”>' +
+        return '<div class=”rv-admin-item” data-id=”' + esc(r.id) + '”>' +
           '<div class=”rv-admin-meta”><span class=”rv-admin-stars”>' + starHTML(r.rating) + '</span>' +
-          '<strong>' + r.name + '</strong> &middot; <span>' + r.date + '</span></div>' +
-          '<p class=”rv-admin-text”>&ldquo;' + r.text + '&rdquo;</p>' +
+          '<strong>' + esc(r.name) + '</strong> &middot; <span>' + esc(r.date) + '</span></div>' +
+          '<p class=”rv-admin-text”>&ldquo;' + esc(r.text) + '&rdquo;</p>' +
           '<div class=”rv-admin-actions”>' +
-            '<button class=”btn btn--primary rv-admin-btn” onclick=”approveReview(\'' + r.id + '\')”>&#10003; Approve</button>' +
-            '<button class=”btn btn--outline-dark rv-admin-btn” onclick=”rejectReview(\'' + r.id + '\')”>&#10007; Reject</button>' +
+            '<button class=”rv-admin-btn rv-admin-btn--approve” onclick=”approveReview(\'' + esc(r.id) + '\')”>&#10003;&nbsp; Approve</button>' +
+            '<button class=”rv-admin-btn rv-admin-btn--reject”  onclick=”rejectReview(\''  + esc(r.id) + '\')”>&#10007;&nbsp; Reject</button>' +
           '</div></div>';
       }).join('');
     }

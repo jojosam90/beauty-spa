@@ -1514,17 +1514,33 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 .rv-admin-box { max-width: 560px; }
 .rv-admin-item {
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 14px;
+  border-radius: 12px;
+  padding: 18px 18px 14px;
+  margin-bottom: 16px;
+  background: #fafafa;
 }
-.rv-admin-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; margin-bottom: 8px; }
-.rv-admin-stars { color: #f59e0b; font-size: 14px; letter-spacing: 1px; }
-.rv-admin-text { font-size: 14px; line-height: 1.7; color: var(--dark); margin: 0 0 14px; }
+.rv-admin-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; margin-bottom: 6px; }
+.rv-admin-stars { color: #f59e0b; font-size: 15px; letter-spacing: 1px; }
+.rv-admin-text { font-size: 14px; line-height: 1.75; color: var(--dark); margin: 0 0 14px; font-style: italic; }
 .rv-admin-actions { display: flex; gap: 10px; }
-.rv-admin-btn { padding: 8px 18px !important; font-size: 13px !important; animation: none !important; }
+.rv-admin-btn {
+  padding: 9px 20px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  border: none !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  animation: none !important;
+  transition: opacity .15s, transform .15s !important;
+}
 .rv-admin-btn::after { display: none !important; }
-.rv-admin-empty { color: var(--text-muted); text-align: center; padding: 24px 0; font-size: 15px; }
+.rv-admin-btn:hover { opacity: .88; transform: translateY(-1px); }
+.rv-admin-btn--approve { background: #16a34a !important; color: #fff !important; }
+.rv-admin-btn--reject  { background: #dc2626 !important; color: #fff !important; }
+.rv-admin-empty { color: var(--text-muted); text-align: center; padding: 28px 0; font-size: 15px; }
 
 /* ==========================================================
    Responsive — 1024 px (tablet breakpoint)
