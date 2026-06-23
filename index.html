@@ -439,8 +439,8 @@
           '<strong>' + esc(r.name) + '</strong> &middot; <span>' + esc(r.date) + '</span></div>' +
           '<p class=”rv-admin-text”>&ldquo;' + esc(r.text) + '&rdquo;</p>' +
           '<div class=”rv-admin-actions”>' +
-            '<button class=”rv-admin-btn rv-admin-btn--approve” onclick=”approveReview(\'' + esc(r.id) + '\')”>&#10003;&nbsp; Approve</button>' +
-            '<button class=”rv-admin-btn rv-admin-btn--reject”  onclick=”rejectReview(\''  + esc(r.id) + '\')”>&#10007;&nbsp; Reject</button>' +
+            '<button onclick=”approveReview(\'' + esc(r.id) + '\')” style=”background:#16a34a;color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.3px”>&#10003; Approve</button>' +
+            '<button onclick=”rejectReview(\''  + esc(r.id) + '\')” style=”background:#dc2626;color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.3px;margin-left:10px”>&#10007; Reject</button>' +
           '</div></div>';
       }).join('');
     }
