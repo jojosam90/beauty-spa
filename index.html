@@ -401,25 +401,54 @@
       for (var i = 1; i <= 5; i++) s += (i <= n ? '&#9733;' : '&#9734;');
       return s;
     }
-    function makeCardHTML(r, hidden) {
-      return '<article class=”rv-card”' + (hidden ? ' aria-hidden=”true”' : '') +
-        ' style=”flex:0 0 340px;min-width:260px;background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 16px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:14px”>' +
-        '<div style=”display:flex;align-items:center;justify-content:space-between”>' +
-          '<span style=”color:#f59e0b;font-size:15px;letter-spacing:2px”>' + starHTML(r.rating) + '</span>' +
-          '<span style=”display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:#15803d”>&#10003; Verified</span>' +
-        '</div>' +
-        '<p style=”font-size:14px;line-height:1.78;color:#1d1d1b;font-style:italic;flex:1;margin:0”>”' + esc(r.text) + '”</p>' +
-        '<div style=”display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid #e8e0d5;margin-top:auto”>' +
-          '<div style=”width:38px;height:38px;border-radius:50%;background:#fdf0f2;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#CC2929;flex-shrink:0;letter-spacing:0.5px”>' + esc(r.initials) + '</div>' +
-          '<div><strong style=”display:block;font-size:13px;font-weight:600;color:#1d1d1b”>' + esc(r.name) + '</strong></div>' +
-          '<span style=”margin-left:auto;font-size:11px;color:#888;white-space:nowrap;flex-shrink:0”>' + esc(r.date) + '</span>' +
-        '</div></article>';
+    function buildReviewCard(r, hidden) {
+      var art = document.createElement('article');
+      art.className = 'rv-card';
+      if (hidden) art.setAttribute('aria-hidden', 'true');
+
+      var top = document.createElement('div');
+      top.className = 'rv-card__top';
+      var stars = document.createElement('span');
+      stars.className = 'rv-card__stars';
+      stars.innerHTML = starHTML(r.rating);
+      var badge = document.createElement('span');
+      badge.className = 'rv-card__badge';
+      badge.style.cssText = 'color:#15803d';
+      badge.textContent = '✓ Verified';
+      top.appendChild(stars);
+      top.appendChild(badge);
+
+      var p = document.createElement('p');
+      p.className = 'rv-card__text';
+      p.textContent = '“' + r.text + '”';
+
+      var auth = document.createElement('div');
+      auth.className = 'rv-card__author';
+      var av = document.createElement('div');
+      av.className = 'rv-card__avatar';
+      av.textContent = r.initials;
+      var info = document.createElement('div');
+      info.className = 'rv-card__info';
+      var strong = document.createElement('strong');
+      strong.textContent = r.name;
+      info.appendChild(strong);
+      var dateEl = document.createElement('span');
+      dateEl.className = 'rv-card__date';
+      dateEl.textContent = r.date;
+      auth.appendChild(av);
+      auth.appendChild(info);
+      auth.appendChild(dateEl);
+
+      art.appendChild(top);
+      art.appendChild(p);
+      art.appendChild(auth);
+      return art;
     }
     function addCardToCarousel(r) {
       var track = document.querySelector('.rv-track');
       var firstHidden = track.querySelector('.rv-card[aria-hidden]');
-      firstHidden.insertAdjacentHTML('beforebegin', makeCardHTML(r, false));
-      track.insertAdjacentHTML('beforeend', makeCardHTML(r, true));
+      track.insertBefore(buildReviewCard(r, false), firstHidden);
+      track.appendChild(buildReviewCard(r, true));
     }
 
     /* ---- Load approved reviews on page load ---- */
