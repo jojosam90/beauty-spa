@@ -434,16 +434,16 @@
         return;
       }
       list.innerHTML = pending.map(function(r) {
-        return '<div class=”rv-admin-item” data-id=”' + esc(r.id) + '”>' +
+        return '<div class=”rv-admin-item” data-id=”' + r.id + '”>' +
           '<div class=”rv-admin-meta”><span class=”rv-admin-stars”>' + starHTML(r.rating) + '</span>' +
           '<strong>' + esc(r.name) + '</strong> &middot; <span>' + esc(r.date) + '</span></div>' +
           '<p class=”rv-admin-text”>&ldquo;' + esc(r.text) + '&rdquo;</p>' +
           '<div style=”display:flex;gap:24px;margin-top:14px”>' +
-            '<button onclick=”approveReview(\'' + esc(r.id) + '\')” style=”display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:4px 8px”>' +
+            '<button data-action=”approve” data-id=”' + r.id + '” style=”display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:4px 8px”>' +
               '<span style=”width:52px;height:52px;border-radius:50%;border:3px solid #22c55e;display:flex;align-items:center;justify-content:center;font-size:24px;color:#22c55e;line-height:1”>&#10003;</span>' +
               '<span style=”color:#16a34a;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase”>Approve</span>' +
             '</button>' +
-            '<button onclick=”rejectReview(\'' + esc(r.id) + '\')” style=”display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:4px 8px”>' +
+            '<button data-action=”reject” data-id=”' + r.id + '” style=”display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:4px 8px”>' +
               '<span style=”width:52px;height:52px;border-radius:50%;border:3px solid #ef4444;display:flex;align-items:center;justify-content:center;font-size:22px;color:#ef4444;line-height:1”>&#10007;</span>' +
               '<span style=”color:#dc2626;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase”>Reject</span>' +
             '</button>' +
@@ -451,25 +451,32 @@
       }).join('');
     }
 
-    window.approveReview = function(id) {
-      var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      var approved = null;
-      all = all.map(function(r) { if (r.id === id) { r.status = 'approved'; approved = r; } return r; });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
-      if (approved) addCardToCarousel(approved);
-      var item = document.querySelector('.rv-admin-item[data-id=”' + id + '”]');
-      if (item) item.remove();
-      if (!document.querySelector('.rv-admin-item')) renderAdminList();
-    };
+    document.getElementById('rvAdminList').addEventListener('click', function(e) {
+      var btn = e.target.closest('button[data-action]');
+      if (!btn) return;
+      var id     = btn.getAttribute('data-id');
+      var action = btn.getAttribute('data-action');
 
-    window.rejectReview = function(id) {
-      if (!confirm('Remove this review permanently?')) return;
-      var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').filter(function(r) { return r.id !== id; });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
-      var item = document.querySelector('.rv-admin-item[data-id=”' + id + '”]');
-      if (item) item.remove();
-      if (!document.querySelector('.rv-admin-item')) renderAdminList();
-    };
+      if (action === 'approve') {
+        var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        var approved = null;
+        all = all.map(function(r) { if (r.id === id) { r.status = 'approved'; approved = r; } return r; });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+        if (approved) addCardToCarousel(approved);
+        var item = document.querySelector('.rv-admin-item[data-id=”' + id + '”]');
+        if (item) item.remove();
+        if (!document.querySelector('.rv-admin-item')) renderAdminList();
+      }
+
+      if (action === 'reject') {
+        if (!confirm('Remove this review permanently?')) return;
+        var all2 = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').filter(function(r) { return r.id !== id; });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(all2));
+        var item2 = document.querySelector('.rv-admin-item[data-id=”' + id + '”]');
+        if (item2) item2.remove();
+        if (!document.querySelector('.rv-admin-item')) renderAdminList();
+      }
+    });
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') { closeReviewModal(); closeAdminPanel(); }
