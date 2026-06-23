@@ -402,15 +402,17 @@
       return s;
     }
     function makeCardHTML(r, hidden) {
-      return '<article class=”rv-card”' + (hidden ? ' aria-hidden=”true”' : '') + '>' +
-        '<div class=”rv-card__top”><span class=”rv-card__stars”>' + starHTML(r.rating) + '</span>' +
-        '<span class=”rv-card__badge” style=”color:#15803d”>&#10003; Verified</span>' +
+      return '<article class=”rv-card”' + (hidden ? ' aria-hidden=”true”' : '') +
+        ' style=”flex:0 0 340px;min-width:260px;background:#fff;border-radius:14px;padding:22px;box-shadow:0 2px 16px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:14px”>' +
+        '<div style=”display:flex;align-items:center;justify-content:space-between”>' +
+          '<span style=”color:#f59e0b;font-size:15px;letter-spacing:2px”>' + starHTML(r.rating) + '</span>' +
+          '<span style=”display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:#15803d”>&#10003; Verified</span>' +
         '</div>' +
-        '<p class=”rv-card__text”>“' + esc(r.text) + '”</p>' +
-        '<div class=”rv-card__author”>' +
-          '<div class=”rv-card__avatar”>' + esc(r.initials) + '</div>' +
-          '<div class=”rv-card__info”><strong>' + esc(r.name) + '</strong></div>' +
-          '<span class=”rv-card__date”>' + esc(r.date) + '</span>' +
+        '<p style=”font-size:14px;line-height:1.78;color:#1d1d1b;font-style:italic;flex:1;margin:0”>”' + esc(r.text) + '”</p>' +
+        '<div style=”display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid #e8e0d5;margin-top:auto”>' +
+          '<div style=”width:38px;height:38px;border-radius:50%;background:#fdf0f2;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#CC2929;flex-shrink:0;letter-spacing:0.5px”>' + esc(r.initials) + '</div>' +
+          '<div><strong style=”display:block;font-size:13px;font-weight:600;color:#1d1d1b”>' + esc(r.name) + '</strong></div>' +
+          '<span style=”margin-left:auto;font-size:11px;color:#888;white-space:nowrap;flex-shrink:0”>' + esc(r.date) + '</span>' +
         '</div></article>';
     }
     function addCardToCarousel(r) {
