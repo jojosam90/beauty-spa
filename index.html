@@ -295,8 +295,8 @@
     <div class="rv-modal__overlay"></div>
     <div class="rv-modal__box rv-admin-box">
       <button class="rv-modal__close" onclick="closeAdminPanel()" aria-label="Close">&times;</button>
-      <h3 class="rv-modal__title">Pending Reviews</h3>
-      <p class="rv-modal__sub">Approve or reject customer reviews before they go live.</p>
+      <h3 class="rv-modal__title">Manage Reviews</h3>
+      <p class="rv-modal__sub">Approve, reject or delete customer reviews.</p>
       <div id="rvAdminList"></div>
     </div>
   </div>
@@ -515,36 +515,65 @@
       list.innerHTML = '<p style="text-align:center;color:#999;padding:16px 0">Loading…</p>';
       getAll(function(all) { renderAdminListWith(all); });
     }
+    function buildAdminItem(r, actions) {
+      var item = document.createElement('div');
+      item.className = 'rv-admin-item';
+      var meta = document.createElement('div');
+      meta.className = 'rv-admin-meta';
+      meta.innerHTML = '<span class=”rv-admin-stars”>' + starHTML(r.rating) + '</span><strong>' + esc(r.name) + '</strong> &middot; <span>' + esc(r.date) + '</span>';
+      var text = document.createElement('p');
+      text.className = 'rv-admin-text';
+      text.textContent = '”' + r.text + '”';
+      item.appendChild(meta);
+      item.appendChild(text);
+      item.appendChild(actions);
+      return item;
+    }
+
     function renderAdminListWith(all) {
-      var pending = all.filter(function(r) { return r.status === 'pending'; });
+      var pending  = all.filter(function(r) { return r.status === 'pending'; });
+      var approved = all.filter(function(r) { return r.status === 'approved'; });
       var list = document.getElementById('rvAdminList');
       list.innerHTML = '';
+
+      /* ---- Pending section ---- */
+      var ph = document.createElement('h4');
+      ph.style.cssText = 'font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin:0 0 12px';
+      ph.textContent = 'Pending';
+      list.appendChild(ph);
       if (!pending.length) {
-        list.innerHTML = '<p class=”rv-admin-empty”>No pending reviews &#10003;</p>';
-        return;
+        var empty = document.createElement('p');
+        empty.className = 'rv-admin-empty';
+        empty.innerHTML = 'No pending reviews &#10003;';
+        list.appendChild(empty);
+      } else {
+        pending.forEach(function(r) {
+          var actions = document.createElement('div');
+          actions.style.cssText = 'display:flex;gap:24px;margin-top:14px';
+          actions.appendChild(makeBtn('✓', 'Approve', '#16a34a', '#22c55e', function() { doApprove(r.id); }));
+          actions.appendChild(makeBtn('✗', 'Reject',  '#dc2626', '#ef4444', function() { doReject(r.id); }));
+          list.appendChild(buildAdminItem(r, actions));
+        });
       }
-      pending.forEach(function(r) {
-        var item = document.createElement('div');
-        item.className = 'rv-admin-item';
 
-        var meta = document.createElement('div');
-        meta.className = 'rv-admin-meta';
-        meta.innerHTML = '<span class=”rv-admin-stars”>' + starHTML(r.rating) + '</span><strong>' + esc(r.name) + '</strong> &middot; <span>' + esc(r.date) + '</span>';
-
-        var text = document.createElement('p');
-        text.className = 'rv-admin-text';
-        text.textContent = '“' + r.text + '”';
-
-        var actions = document.createElement('div');
-        actions.style.cssText = 'display:flex;gap:24px;margin-top:14px';
-        actions.appendChild(makeBtn('✓', 'Approve', '#16a34a', '#22c55e', function() { doApprove(r.id); }));
-        actions.appendChild(makeBtn('✗', 'Reject',  '#dc2626', '#ef4444', function() { doReject(r.id); }));
-
-        item.appendChild(meta);
-        item.appendChild(text);
-        item.appendChild(actions);
-        list.appendChild(item);
-      });
+      /* ---- Published section ---- */
+      var ah = document.createElement('h4');
+      ah.style.cssText = 'font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#888;margin:20px 0 12px';
+      ah.textContent = 'Published';
+      list.appendChild(ah);
+      if (!approved.length) {
+        var aEmpty = document.createElement('p');
+        aEmpty.className = 'rv-admin-empty';
+        aEmpty.textContent = 'No published reviews yet.';
+        list.appendChild(aEmpty);
+      } else {
+        approved.forEach(function(r) {
+          var actions = document.createElement('div');
+          actions.style.cssText = 'display:flex;gap:24px;margin-top:14px';
+          actions.appendChild(makeBtn('✗', 'Delete', '#dc2626', '#ef4444', function() { doReject(r.id); }));
+          list.appendChild(buildAdminItem(r, actions));
+        });
+      }
     }
 
     document.addEventListener('keydown', function(e) {
