@@ -309,31 +309,28 @@
   (function () {
     var ADMIN_PIN    = '8653';
     var STORAGE_KEY  = 'ec_reviews';
-    var BIN_ID       = 'PASTE_BIN_ID_HERE';
-    var BIN_KEY      = 'PASTE_MASTER_KEY_HERE';
-    var BIN_URL      = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
-    var useCloud     = BIN_ID !== 'PASTE_BIN_ID_HERE';
+    var BIN_ID  = '6a3a5b49da38895dfef0b527';
+    var BIN_KEY = '$2a$10$THBTeuDH99a7bBAUv9NQj.dvA5/rNJ5JMkPB38JaEUiXNGH1Tq6fG';
+    var BIN_URL = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
 
     /* ---- Cloud helpers ---- */
-    function cloudGet(cb) {
+    function getAll(cb) {
       fetch(BIN_URL + '/latest', { headers: { 'X-Master-Key': BIN_KEY } })
         .then(function(r) { return r.json(); })
-        .then(function(d) { cb(Array.isArray(d.record) ? d.record : []); })
+        .then(function(d) {
+          var reviews = (d.record && Array.isArray(d.record.reviews)) ? d.record.reviews : [];
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+          cb(reviews);
+        })
         .catch(function() { cb(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); });
     }
-    function cloudPut(data, cb) {
+    function saveAll(data, cb) {
       fetch(BIN_URL, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'X-Master-Key': BIN_KEY },
-        body: JSON.stringify(data)
+        body: JSON.stringify({ reviews: data })
       }).then(function() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); if (cb) cb(); })
         .catch(function() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); if (cb) cb(); });
-    }
-    function getAll(cb) {
-      if (useCloud) { cloudGet(cb); } else { cb(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); }
-    }
-    function saveAll(data, cb) {
-      if (useCloud) { cloudPut(data, cb); } else { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); if (cb) cb(); }
     }
     var selectedRating = 0;
     var stars = document.querySelectorAll('#rvStars span');
