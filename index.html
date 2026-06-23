@@ -405,7 +405,7 @@
     function makeCardHTML(r, hidden) {
       return '<article class=”rv-card”' + (hidden ? ' aria-hidden=”true”' : '') + '>' +
         '<div class=”rv-card__top”><span class=”rv-card__stars”>' + starHTML(r.rating) + '</span>' +
-        '<span class=”rv-card__badge”><svg width=”14” height=”14” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2.5” stroke-linecap=”round” stroke-linejoin=”round” style=”color:#15803d”><polyline points=”20 6 9 17 4 12”/></svg> Verified</span>' +
+        '<span class=”rv-card__badge” style=”color:#15803d”>&#10003; Verified</span>' +
         '</div>' +
         '<p class=”rv-card__text”>“' + esc(r.text) + '”</p>' +
         '<div class=”rv-card__author”>' +
