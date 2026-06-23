@@ -74,7 +74,7 @@
   <link rel="icon" type="image/png" href="/images/fb_logo5.png">`r`n  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=37">
+  <link rel="stylesheet" href="css/styles.css?v=38">
 </head>
 <body>
 
@@ -217,7 +217,7 @@
       </div>
     </div>
     <div class="container rv-write-wrap">
-      <button class="btn btn--outline-dark" onclick="openReviewModal()">&#9733;&nbsp; Write a Review</button>
+      <button class="btn btn--primary" onclick="openReviewModal()">&#9733;&nbsp; Write a Review</button>
     </div>
   </section>
 
@@ -262,7 +262,7 @@
     <div class="rv-modal__box">
       <button class="rv-modal__close" onclick="closeReviewModal()" aria-label="Close">&times;</button>
       <h3 class="rv-modal__title">Share Your Experience</h3>
-      <p class="rv-modal__sub">Your review will appear in the carousel instantly.</p>
+      <p class="rv-modal__sub">Submit your review — it will appear after approval.</p>
       <form id="rvForm" onsubmit="submitReview(event)" novalidate>
         <div class="rv-modal__stars" id="rvStars" role="group" aria-label="Star rating">
           <span data-val="1" title="1 star">&#9733;</span>
@@ -283,10 +283,21 @@
         <button type="submit" class="btn btn--primary btn--full">Post Review</button>
       </form>
       <div class="rv-modal__success" id="rvSuccess">
-        <div class="rv-success-icon">&#9733;</div>
+        <div class="rv-success-icon">&#10084;</div>
         <h4>Thank you!</h4>
-        <p>Your review has been posted to the carousel.</p>
+        <p>Your review has been submitted and is pending approval. We appreciate your feedback!</p>
       </div>
+    </div>
+  </div>
+
+  <!-- ===================== ADMIN PANEL ===================== -->
+  <div class="rv-modal rv-admin-modal" id="rvAdmin" role="dialog" aria-modal="true" aria-label="Review Admin" hidden>
+    <div class="rv-modal__overlay" onclick="closeAdminPanel()"></div>
+    <div class="rv-modal__box rv-admin-box">
+      <button class="rv-modal__close" onclick="closeAdminPanel()" aria-label="Close">&times;</button>
+      <h3 class="rv-modal__title">Pending Reviews</h3>
+      <p class="rv-modal__sub">Approve or reject customer reviews before they go live.</p>
+      <div id="rvAdminList"></div>
     </div>
   </div>
 
@@ -296,25 +307,26 @@
   <script src="js/main.js"></script>
   <script>
   (function () {
+    var ADMIN_PIN = '0482';  // last 4 digits of phone — change if needed
+    var STORAGE_KEY = 'ec_reviews';
     var selectedRating = 0;
     var stars = document.querySelectorAll('#rvStars span');
 
+    /* ---- Star rating ---- */
     function setStars(val) {
-      stars.forEach(function(s) {
-        s.classList.toggle('active', +s.dataset.val <= val);
-      });
+      stars.forEach(function(s) { s.classList.toggle('active', +s.dataset.val <= val); });
     }
-
     stars.forEach(function(s) {
       s.addEventListener('mouseover', function() { setStars(+s.dataset.val); });
       s.addEventListener('mouseout',  function() { setStars(selectedRating); });
-      s.addEventListener('click',     function() {
+      s.addEventListener('click', function() {
         selectedRating = +s.dataset.val;
         document.getElementById('rvRating').value = selectedRating;
         setStars(selectedRating);
       });
     });
 
+    /* ---- Review modal ---- */
     window.openReviewModal = function() {
       selectedRating = 0;
       document.getElementById('rvRating').value = 0;
@@ -325,16 +337,12 @@
       document.getElementById('rvModal').hidden = false;
       document.body.style.overflow = 'hidden';
     };
-
     window.closeReviewModal = function() {
       document.getElementById('rvModal').hidden = true;
       document.body.style.overflow = '';
     };
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeReviewModal();
-    });
-
+    /* ---- Submit → pending (not live yet) ---- */
     window.submitReview = function(e) {
       e.preventDefault();
       var rating = +document.getElementById('rvRating').value;
@@ -346,36 +354,33 @@
       var now  = new Date();
       var date = (now.getMonth()+1) + '/' + now.getDate() + '/' + now.getFullYear();
       var initials = name.split(' ').filter(Boolean).map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2);
-      var review = { name: name, text: text, rating: rating, date: date, initials: initials };
+      var review = { id: Date.now().toString(), name: name, text: text, rating: rating, date: date, initials: initials, status: 'pending' };
 
-      var saved = JSON.parse(localStorage.getItem('ec_reviews') || '[]');
-      saved.unshift(review);
-      localStorage.setItem('ec_reviews', JSON.stringify(saved));
-
-      addCardToCarousel(review);
+      var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      all.unshift(review);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
 
       document.getElementById('rvForm').style.display = 'none';
       document.getElementById('rvSuccess').style.display = 'block';
-      setTimeout(closeReviewModal, 2000);
+      setTimeout(closeReviewModal, 2800);
     };
 
+    /* ---- Carousel helpers ---- */
     function starHTML(n) {
       var s = '';
       for (var i = 1; i <= 5; i++) s += (i <= n ? '&#9733;' : '&#9734;');
       return s;
     }
-
     function makeCardHTML(r, hidden) {
-      return '<article class="rv-card"' + (hidden ? ' aria-hidden="true"' : '') + '>' +
-        '<div class="rv-card__top"><span class="rv-card__stars">' + starHTML(r.rating) + '</span></div>' +
-        '<p class="rv-card__text">“' + r.text + '”</p>' +
-        '<div class="rv-card__author">' +
-          '<div class="rv-card__avatar">' + r.initials + '</div>' +
-          '<div class="rv-card__info"><strong>' + r.name + '</strong></div>' +
-          '<span class="rv-card__date">' + r.date + '</span>' +
+      return '<article class=”rv-card”' + (hidden ? ' aria-hidden=”true”' : '') + '>' +
+        '<div class=”rv-card__top”><span class=”rv-card__stars”>' + starHTML(r.rating) + '</span></div>' +
+        '<p class=”rv-card__text”>”' + r.text + '”</p>' +
+        '<div class=”rv-card__author”>' +
+          '<div class=”rv-card__avatar”>' + r.initials + '</div>' +
+          '<div class=”rv-card__info”><strong>' + r.name + '</strong></div>' +
+          '<span class=”rv-card__date”>' + r.date + '</span>' +
         '</div></article>';
     }
-
     function addCardToCarousel(r) {
       var track = document.querySelector('.rv-track');
       var firstHidden = track.querySelector('.rv-card[aria-hidden]');
@@ -383,11 +388,79 @@
       track.insertAdjacentHTML('beforeend', makeCardHTML(r, true));
     }
 
-    // Load persisted reviews on page load
-    var saved = JSON.parse(localStorage.getItem('ec_reviews') || '[]');
-    for (var i = saved.length - 1; i >= 0; i--) {
-      addCardToCarousel(saved[i]);
+    /* ---- Load approved reviews on page load ---- */
+    var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    var approved = all.filter(function(r) { return r.status === 'approved'; });
+    for (var i = approved.length - 1; i >= 0; i--) { addCardToCarousel(approved[i]); }
+
+    /* ---- Admin panel — 5 clicks on footer copyright ---- */
+    var clickCount = 0, clickTimer = null;
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('[data-i18n=”ft_copy”]');
+      if (!el) return;
+      clickCount++;
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(function() { clickCount = 0; }, 2000);
+      if (clickCount >= 5) {
+        clickCount = 0;
+        var pin = prompt('Admin PIN:');
+        if (pin === ADMIN_PIN) openAdminPanel();
+        else if (pin !== null) alert('Incorrect PIN.');
+      }
+    });
+
+    window.openAdminPanel = function() {
+      renderAdminList();
+      document.getElementById('rvAdmin').hidden = false;
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeAdminPanel = function() {
+      document.getElementById('rvAdmin').hidden = true;
+      document.body.style.overflow = '';
+    };
+
+    function renderAdminList() {
+      var pending = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').filter(function(r) { return r.status === 'pending'; });
+      var list = document.getElementById('rvAdminList');
+      if (!pending.length) {
+        list.innerHTML = '<p class=”rv-admin-empty”>No pending reviews &#10003;</p>';
+        return;
+      }
+      list.innerHTML = pending.map(function(r) {
+        return '<div class=”rv-admin-item” data-id=”' + r.id + '”>' +
+          '<div class=”rv-admin-meta”><span class=”rv-admin-stars”>' + starHTML(r.rating) + '</span>' +
+          '<strong>' + r.name + '</strong> &middot; <span>' + r.date + '</span></div>' +
+          '<p class=”rv-admin-text”>&ldquo;' + r.text + '&rdquo;</p>' +
+          '<div class=”rv-admin-actions”>' +
+            '<button class=”btn btn--primary rv-admin-btn” onclick=”approveReview(\'' + r.id + '\')”>&#10003; Approve</button>' +
+            '<button class=”btn btn--outline-dark rv-admin-btn” onclick=”rejectReview(\'' + r.id + '\')”>&#10007; Reject</button>' +
+          '</div></div>';
+      }).join('');
     }
+
+    window.approveReview = function(id) {
+      var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      var approved = null;
+      all = all.map(function(r) { if (r.id === id) { r.status = 'approved'; approved = r; } return r; });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+      if (approved) addCardToCarousel(approved);
+      var item = document.querySelector('.rv-admin-item[data-id=”' + id + '”]');
+      if (item) item.remove();
+      if (!document.querySelector('.rv-admin-item')) renderAdminList();
+    };
+
+    window.rejectReview = function(id) {
+      if (!confirm('Remove this review permanently?')) return;
+      var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').filter(function(r) { return r.id !== id; });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+      var item = document.querySelector('.rv-admin-item[data-id=”' + id + '”]');
+      if (item) item.remove();
+      if (!document.querySelector('.rv-admin-item')) renderAdminList();
+    };
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeReviewModal(); closeAdminPanel(); }
+    });
   })();
   </script>
 </body>
