@@ -307,8 +307,34 @@
   <script src="js/main.js"></script>
   <script>
   (function () {
-    var ADMIN_PIN = '8653';
-    var STORAGE_KEY = 'ec_reviews';
+    var ADMIN_PIN    = '8653';
+    var STORAGE_KEY  = 'ec_reviews';
+    var BIN_ID       = 'PASTE_BIN_ID_HERE';
+    var BIN_KEY      = 'PASTE_MASTER_KEY_HERE';
+    var BIN_URL      = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
+    var useCloud     = BIN_ID !== 'PASTE_BIN_ID_HERE';
+
+    /* ---- Cloud helpers ---- */
+    function cloudGet(cb) {
+      fetch(BIN_URL + '/latest', { headers: { 'X-Master-Key': BIN_KEY } })
+        .then(function(r) { return r.json(); })
+        .then(function(d) { cb(Array.isArray(d.record) ? d.record : []); })
+        .catch(function() { cb(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); });
+    }
+    function cloudPut(data, cb) {
+      fetch(BIN_URL, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'X-Master-Key': BIN_KEY },
+        body: JSON.stringify(data)
+      }).then(function() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); if (cb) cb(); })
+        .catch(function() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); if (cb) cb(); });
+    }
+    function getAll(cb) {
+      if (useCloud) { cloudGet(cb); } else { cb(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); }
+    }
+    function saveAll(data, cb) {
+      if (useCloud) { cloudPut(data, cb); } else { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); if (cb) cb(); }
+    }
     var selectedRating = 0;
     var stars = document.querySelectorAll('#rvStars span');
 
@@ -351,18 +377,22 @@
       if (!rating) { alert('Please select a star rating.'); return; }
       if (!name || !text) return;
 
+      var submitBtn = e.target.querySelector('button[type=submit]');
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting…'; }
+
       var now  = new Date();
       var date = (now.getMonth()+1) + '/' + now.getDate() + '/' + now.getFullYear();
       var initials = name.split(' ').filter(Boolean).map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2);
       var review = { id: Date.now().toString(), name: name, text: text, rating: rating, date: date, initials: initials, status: 'pending' };
 
-      var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      all.unshift(review);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
-
-      document.getElementById('rvForm').style.display = 'none';
-      document.getElementById('rvSuccess').style.display = 'block';
-      setTimeout(closeReviewModal, 2800);
+      getAll(function(all) {
+        all.unshift(review);
+        saveAll(all, function() {
+          document.getElementById('rvForm').style.display = 'none';
+          document.getElementById('rvSuccess').style.display = 'block';
+          setTimeout(closeReviewModal, 2800);
+        });
+      });
     };
 
     /* ---- Helpers ---- */
@@ -392,9 +422,10 @@
     }
 
     /* ---- Load approved reviews on page load ---- */
-    var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    var approved = all.filter(function(r) { return r.status === 'approved'; });
-    for (var i = approved.length - 1; i >= 0; i--) { addCardToCarousel(approved[i]); }
+    getAll(function(all) {
+      var approved = all.filter(function(r) { return r.status === 'approved'; });
+      for (var i = approved.length - 1; i >= 0; i--) { addCardToCarousel(approved[i]); }
+    });
 
     /* ---- Admin panel — 5 clicks on footer copyright ---- */
     var clickCount = 0, clickTimer = null;
@@ -442,23 +473,32 @@
     }
 
     function doApprove(id) {
-      var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      var found = null;
-      all = all.map(function(r) { if (r.id === id) { r.status = 'approved'; found = r; } return r; });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
-      if (found) addCardToCarousel(found);
-      renderAdminList();
+      getAll(function(all) {
+        var found = null;
+        all = all.map(function(r) { if (r.id === id) { r.status = 'approved'; found = r; } return r; });
+        saveAll(all, function() {
+          if (found) addCardToCarousel(found);
+          renderAdminList();
+        });
+      });
     }
 
     function doReject(id) {
       if (!confirm('Remove this review permanently?')) return;
-      var all = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').filter(function(r) { return r.id !== id; });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
-      renderAdminList();
+      getAll(function(all) {
+        saveAll(all.filter(function(r) { return r.id !== id; }), function() {
+          renderAdminList();
+        });
+      });
     }
 
     function renderAdminList() {
-      var pending = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').filter(function(r) { return r.status === 'pending'; });
+      var list = document.getElementById('rvAdminList');
+      list.innerHTML = '<p style="text-align:center;color:#999;padding:16px 0">Loading…</p>';
+      getAll(function(all) { renderAdminListWith(all); });
+    }
+    function renderAdminListWith(all) {
+      var pending = all.filter(function(r) { return r.status === 'pending'; });
       var list = document.getElementById('rvAdminList');
       list.innerHTML = '';
       if (!pending.length) {
