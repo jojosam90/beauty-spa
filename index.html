@@ -302,7 +302,7 @@
   </div>
 
   <script>const BASE_PATH = '';</script>
-  <script src="js/layout.js?v=16"></script>
+  <script src="js/layout.js?v=17"></script>
   <script src="js/i18n.js?v=14"></script>
   <script src="js/main.js"></script>
   <script>
@@ -469,12 +469,29 @@
       return btn;
     }
 
+    function showToast(msg, type) {
+      var t = document.createElement('div');
+      t.textContent = msg;
+      t.style.cssText = 'position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:' +
+        (type === 'reject' ? '#b91c1c' : '#15803d') +
+        ';color:#fff;font-size:14px;font-weight:600;letter-spacing:.5px;padding:12px 28px;border-radius:30px;box-shadow:0 4px 18px rgba(0,0,0,.22);z-index:99999;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none';
+      document.body.appendChild(t);
+      requestAnimationFrame(function() {
+        t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)';
+      });
+      setTimeout(function() {
+        t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)';
+        setTimeout(function() { t.parentNode && t.parentNode.removeChild(t); }, 300);
+      }, 2800);
+    }
+
     function doApprove(id) {
       getAll(function(all) {
         var found = null;
         all = all.map(function(r) { if (r.id === id) { r.status = 'approved'; found = r; } return r; });
         saveAll(all, function() {
           if (found) addCardToCarousel(found);
+          showToast('Review approved and published!', 'approve');
           renderAdminList();
         });
       });
@@ -484,6 +501,7 @@
       if (!confirm('Remove this review permanently?')) return;
       getAll(function(all) {
         saveAll(all.filter(function(r) { return r.id !== id; }), function() {
+          showToast('Review rejected and removed.', 'reject');
           renderAdminList();
         });
       });
