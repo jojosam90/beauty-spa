@@ -379,7 +379,8 @@
 
       var now  = new Date();
       var date = (now.getMonth()+1) + '/' + now.getDate() + '/' + now.getFullYear();
-      var initials = name.split(' ').filter(Boolean).map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2);
+      var parts = name.split(' ').filter(Boolean);
+      var initials = parts.length > 1 ? parts.map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2) : name.replace(/\s/g,'').toUpperCase().slice(0,2);
       var review = { id: Date.now().toString(), name: name, text: text, rating: rating, date: date, initials: initials, status: 'pending' };
 
       getAll(function(all) {
@@ -403,7 +404,9 @@
     }
     function makeCardHTML(r, hidden) {
       return '<article class=”rv-card”' + (hidden ? ' aria-hidden=”true”' : '') + '>' +
-        '<div class=”rv-card__top”><span class=”rv-card__stars”>' + starHTML(r.rating) + '</span></div>' +
+        '<div class=”rv-card__top”><span class=”rv-card__stars”>' + starHTML(r.rating) + '</span>' +
+        '<span class=”rv-card__badge”><svg width=”14” height=”14” viewBox=”0 0 24 24” fill=”none” stroke=”currentColor” stroke-width=”2.5” stroke-linecap=”round” stroke-linejoin=”round” style=”color:#15803d”><polyline points=”20 6 9 17 4 12”/></svg> Verified</span>' +
+        '</div>' +
         '<p class=”rv-card__text”>“' + esc(r.text) + '”</p>' +
         '<div class=”rv-card__author”>' +
           '<div class=”rv-card__avatar”>' + esc(r.initials) + '</div>' +
