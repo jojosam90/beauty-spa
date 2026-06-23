@@ -1501,7 +1501,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   padding: 20px 0;
   display: none;
 }
-.rv-modal__success .rv-success-icon { font-size: 48px; animation: rv-heart-pop .5s ease; }
+.rv-modal__success .rv-success-icon { font-size: 48px; animation: rv-heart-pop .5s ease; color: var(--primary); }
 .rv-modal__success p { margin: 12px 0 0; color: var(--text-muted); font-size: 14px; }
 .rv-modal__success h4 { font-family: var(--font-head); font-size: 22px; font-weight: 400; margin: 8px 0 0; }
 
