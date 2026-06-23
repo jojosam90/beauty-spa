@@ -262,7 +262,6 @@
     <div class="rv-modal__box">
       <button class="rv-modal__close" onclick="closeReviewModal()" aria-label="Close">&times;</button>
       <h3 class="rv-modal__title">Share Your Experience</h3>
-      <p class="rv-modal__sub">Submit your review — it will appear after approval.</p>
       <form id="rvForm" onsubmit="submitReview(event)" novalidate>
         <div class="rv-modal__stars" id="rvStars" role="group" aria-label="Star rating">
           <span data-val="1" title="1 star">&#9733;</span>
@@ -388,7 +387,7 @@
         saveAll(all, function() {
           document.getElementById('rvForm').style.display = 'none';
           document.getElementById('rvSuccess').style.display = 'block';
-          setTimeout(closeReviewModal, 2800);
+          setTimeout(closeReviewModal, 5000);
         });
       });
     };
