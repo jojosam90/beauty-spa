@@ -1445,6 +1445,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   background: rgba(0,0,0,.5);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
 }
 .rv-modal__box {
   position: relative;
