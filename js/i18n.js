@@ -84,6 +84,7 @@
       fl_loc:'Preferred Location', fl_treat:'Treatment Interest', fl_msg:'Message',
       fl_submit:'Send Message', fl_sel_c:'Select a clinic', fl_sel_t:'Select a treatment',
       btn_consult:'Book Free Consultation',
+      btn_write_review:'★  Write a Review',
       badge_text:'No Package<br>Required',
       // Reviews carousel
       rv_title:'What Our Clients Say',
@@ -192,6 +193,7 @@
       fl_loc:'首选门店', fl_treat:'疗程兴趣', fl_msg:'留言',
       fl_submit:'发送消息', fl_sel_c:'选择诊所', fl_sel_t:'选择疗程',
       btn_consult:'预约免费咨询',
+      btn_write_review:'★  撰写评价',
       badge_text:'无需配套',
       // Reviews carousel
       rv_title:'客户真实评价',
