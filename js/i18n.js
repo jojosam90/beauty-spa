@@ -35,7 +35,7 @@
       ft_terms:'Terms & Conditions', ft_privacy:'Privacy Policy',
       // Homepage
       h_badge:"★ Singapore's #1 Multi-Award-Winning",
-      h_title:'Beautiful Skin<br><em>Starts Here</em>',
+      h_title:'<span style="font-size:.45em;font-weight:600;letter-spacing:.5px">Singapore\'s No.1 Functional Wellness</span><br>Beautiful Skin<br><em>Starts Here</em>',
       h_sub:"Over 10 years of trusted facial &amp; treatment expertise in Singapore.",
       h_s_yrs:'Years Experience', h_s_cli:'Happy Clients',
       h_s_loc:'Clinic Locations', h_s_aw:'Awards Won',
