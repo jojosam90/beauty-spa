@@ -14,7 +14,7 @@
     <nav class="nav container">
       <a href="${bp}index.html" class="nav__logo">
         <img src="${bp}images/fb_logo5.png" alt="EB Centre" class="nav__logo-img">
-        <span class="logo-estre">EC</span><span class="logo-clinic"> Centre</span>
+        <span class="logo-estre">EB</span><span class="logo-clinic"> Centre</span>
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -57,7 +57,7 @@
       <div class="container">
         <div class="footer__grid">
           <div class="footer__brand">
-            <a href="${bp}index.html" class="footer__logo"><span>EC</span> Centre</a>
+            <a href="${bp}index.html" class="footer__logo"><span>EB</span> Centre</a>
             <p data-i18n="ft_tagline">Over 10 years of trusted facial &amp; treatment expertise in Singapore.</p>
           </div>
           <div class="footer__col">
