@@ -35,7 +35,7 @@
       ft_terms:'Terms & Conditions', ft_privacy:'Privacy Policy',
       // Homepage
       h_badge:"★ Singapore's #1 Multi-Award-Winning",
-      h_title:'<span style="font-size:.45em;font-weight:600;letter-spacing:.5px">Singapore\'s No.1 Functional Wellness</span><br>Beautiful Skin<br><em>Starts Here</em>',
+      h_title:'<span style="font-size:.32em;font-weight:600;letter-spacing:.5px;white-space:nowrap">Singapore\'s No.1 Functional Wellness</span><br>Beautiful Skin<br><em>Starts Here</em>',
       h_sub:"Over 10 years of trusted facial &amp; treatment expertise in Singapore.",
       h_s_yrs:'Years Experience', h_s_cli:'Happy Clients',
       h_s_loc:'Clinic Locations', h_s_aw:'Awards Won',
@@ -144,7 +144,7 @@
       ft_terms:'条款与条件', ft_privacy:'隐私政策',
       // Homepage
       h_badge:'★ 新加坡第一多奖美容诊所',
-      h_title:'<span style="font-size:.45em;font-weight:600;letter-spacing:.5px">新加坡第一家功效性养生</span><br>美丽肌肤<br><em>从这里开始</em>',
+      h_title:'<span style="font-size:.32em;font-weight:600;letter-spacing:.5px;white-space:nowrap">新加坡第一家功效性养生</span><br>美丽肌肤<br><em>从这里开始</em>',
       h_sub:'深耕新加坡逾10年，专注面部与全身疗程护理。',
       h_s_yrs:'年经验', h_s_cli:'满意客户',
       h_s_loc:'诊所地点', h_s_aw:'获奖项目',
