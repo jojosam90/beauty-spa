@@ -145,7 +145,7 @@
       // Homepage
       h_badge:'★ 新加坡第一多奖美容诊所',
       h_title:'美丽肌肤<br><em>从这里开始</em>',
-      h_sub:'深耕新加坡逾10年，专注面部与全身疗程护理。',
+      h_sub:'<span style="font-size:1.25em;font-weight:700;display:block;margin-bottom:10px;letter-spacing:.5px">新加坡第一家功效性养生</span>深耕新加坡逾10年，专注面部与全身疗程护理。',
       h_s_yrs:'年经验', h_s_cli:'满意客户',
       h_s_loc:'诊所地点', h_s_aw:'获奖项目',
       h_btn1:'探索我们的疗程', h_btn2:'免费咨询',
