@@ -311,6 +311,11 @@
     var STORAGE_KEY  = 'ec_reviews';
     var SITE_LANG    = localStorage.getItem('ec_lang') || 'en';
     var TR_CACHE_KEY = 'ec_tr_zh';
+    try {
+      var _tc = JSON.parse(localStorage.getItem(TR_CACHE_KEY) || '{}');
+      Object.keys(_tc).forEach(function(k) { _tc[k] = _tc[k].replace(/\\r\\n|\\r|\\n/g,' ').replace(/[\r\n]+/g,' ').trim(); });
+      localStorage.setItem(TR_CACHE_KEY, JSON.stringify(_tc));
+    } catch(e) {}
     var BIN_ID  = '6a3a5b49da38895dfef0b527';
     var BIN_KEY = '$2a$10$THBTeuDH99a7bBAUv9NQj.dvA5/rNJ5JMkPB38JaEUiXNGH1Tq6fG';
     var BIN_URL = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
