@@ -307,15 +307,20 @@
   <script src="js/main.js"></script>
   <script>
   (function () {
-    var ADMIN_PIN    = '8653';
-    var STORAGE_KEY  = 'ec_reviews';
-    var SITE_LANG    = localStorage.getItem('ec_lang') || 'en';
-    var TR_CACHE_KEY = 'ec_tr_zh';
-    try {
-      var _tc = JSON.parse(localStorage.getItem(TR_CACHE_KEY) || '{}');
-      Object.keys(_tc).forEach(function(k) { _tc[k] = _tc[k].replace(/\\r\\n|\\r|\\n/g,' ').replace(/[\r\n]+/g,' ').trim(); });
-      localStorage.setItem(TR_CACHE_KEY, JSON.stringify(_tc));
-    } catch(e) {}
+    var ADMIN_PIN       = '8653';
+    var STORAGE_KEY     = 'ec_reviews';
+    var SITE_LANG       = localStorage.getItem('ec_lang') || 'en';
+    var TR_CACHE_KEY    = 'ec_tr_zh';
+    var TR_CACHE_KEY_EN = 'ec_tr_en';
+    function _sanitiseCache(key) {
+      try {
+        var _tc = JSON.parse(localStorage.getItem(key) || '{}');
+        Object.keys(_tc).forEach(function(k) { _tc[k] = _tc[k].replace(/\\r\\n|\\r|\\n/g,' ').replace(/[\r\n]+/g,' ').trim(); });
+        localStorage.setItem(key, JSON.stringify(_tc));
+      } catch(e) {}
+    }
+    _sanitiseCache(TR_CACHE_KEY);
+    _sanitiseCache(TR_CACHE_KEY_EN);
     var BIN_ID  = '6a3a5b49da38895dfef0b527';
     var BIN_KEY = '$2a$10$THBTeuDH99a7bBAUv9NQj.dvA5/rNJ5JMkPB38JaEUiXNGH1Tq6fG';
     var BIN_URL = 'https://api.jsonbin.io/v3/b/' + BIN_ID;
@@ -339,18 +344,23 @@
       }).then(function() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); if (cb) cb(); })
         .catch(function() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); if (cb) cb(); });
     }
-    function translateZh(text, cb) {
-      if (SITE_LANG !== 'zh') { cb(text); return; }
+    function _hasChinese(text) { return /[一-鿿]/.test(text); }
+    function translateReview(text, cb) {
+      var toZh = SITE_LANG === 'zh' && !_hasChinese(text);
+      var toEn = SITE_LANG === 'en' && _hasChinese(text);
+      if (!toZh && !toEn) { cb(text); return; }
+      var cacheKey = toZh ? TR_CACHE_KEY : TR_CACHE_KEY_EN;
+      var langPair = toZh ? 'en|zh-CN' : 'zh-CN|en';
       try {
-        var cache = JSON.parse(localStorage.getItem(TR_CACHE_KEY) || '{}');
+        var cache = JSON.parse(localStorage.getItem(cacheKey) || '{}');
         if (cache[text]) { cb(cache[text]); return; }
       } catch(e) {}
-      fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=en|zh-CN')
+      fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=' + langPair)
         .then(function(r) { return r.json(); })
         .then(function(d) {
           var out = (d.responseStatus === 200 && d.responseData) ? d.responseData.translatedText : text;
           out = out.replace(/\\r\\n|\\r|\\n/g, ' ').replace(/[\r\n]+/g, ' ').trim();
-          try { var cache = JSON.parse(localStorage.getItem(TR_CACHE_KEY)||'{}'); cache[text]=out; localStorage.setItem(TR_CACHE_KEY,JSON.stringify(cache)); } catch(e) {}
+          try { var c = JSON.parse(localStorage.getItem(cacheKey)||'{}'); c[text]=out; localStorage.setItem(cacheKey,JSON.stringify(c)); } catch(e) {}
           cb(out);
         })
         .catch(function() { cb(text); });
@@ -469,7 +479,7 @@
       return art;
     }
     function addCardToCarousel(r) {
-      translateZh(r.text, function(translatedText) {
+      translateReview(r.text, function(translatedText) {
         var rc = { id:r.id, name:r.name, initials:r.initials, rating:r.rating, date:r.date, text:translatedText };
         var track = document.querySelector('.rv-track');
         var firstHidden = track.querySelector('.rv-card[aria-hidden]');

@@ -1336,6 +1336,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 
 .rv-card {
   flex: 0 0 340px;
+  height: 280px;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -1371,7 +1372,13 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   color: var(--text);
   font-style: italic;
   flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,.15) transparent;
 }
+.rv-card__text::-webkit-scrollbar { width: 4px; }
+.rv-card__text::-webkit-scrollbar-track { background: transparent; }
+.rv-card__text::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); border-radius: 4px; }
 
 .rv-card__author {
   display: flex;
