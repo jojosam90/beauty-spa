@@ -86,6 +86,9 @@
       btn_consult:'Book Free Consultation',
       btn_write_review:'★  Write a Review',
       badge_text:'No Package<br>Required',
+      badge_popular:'🔥 Popular in ROCHOR',
+      badge_first_trial:'FIRST TRIAL',
+      badge_usually:'Usually',
       // Reviews carousel
       rv_title:'What Our Clients Say',
       rv_sub:'Real reviews from our valued clients across Singapore',
@@ -195,6 +198,9 @@
       btn_consult:'预约免费咨询',
       btn_write_review:'★  撰写评价',
       badge_text:'无需配套',
+      badge_popular:'🔥 ROCHOR热门推荐',
+      badge_first_trial:'首次体验',
+      badge_usually:'原价',
       // Reviews carousel
       rv_title:'客户真实评价',
       rv_sub:'来自新加坡各地客户的真实体验分享',
