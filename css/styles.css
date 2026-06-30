@@ -1068,7 +1068,8 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 }
 .section.contact .section__head { margin-bottom: 20px; }
 .section.contact .section__title { color: #f5e6df; }
-.section.contact .section__sub { color: rgba(245,230,223,.6); }
+.section.contact .section__sub { color: rgba(245,230,223,.6); font-size: 22px; }
+.section.contact .section__sub em { font-family: var(--font-head); font-style: italic; color: #f5e6df; font-weight: 400; }
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
