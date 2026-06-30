@@ -598,6 +598,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 .tcard__img--4 { background-image: url('../images/4.jpg'); background-size: cover; background-position: center top; }
 
 /* Treatment card badges */
+.tcard__loved-stars { color: #f59e0b; }
 .tcard__loved {
   position: absolute;
   top: 14px;
