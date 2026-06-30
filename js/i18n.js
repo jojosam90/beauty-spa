@@ -89,6 +89,7 @@
       badge_popular:'🔥 Popular in ROCHOR',
       badge_first_trial:'FIRST TRIAL',
       badge_usually:'Usually',
+      badge_time:'Only need 30 mins',
       // Reviews carousel
       rv_title:'What Our Clients Say',
       rv_sub:'Real reviews from our valued clients across Singapore',
@@ -201,6 +202,7 @@
       badge_popular:'🔥 ROCHOR热门推荐',
       badge_first_trial:'首次体验',
       badge_usually:'原价',
+      badge_time:'只需30分钟',
       // Reviews carousel
       rv_title:'客户真实评价',
       rv_sub:'来自新加坡各地客户的真实体验分享',
