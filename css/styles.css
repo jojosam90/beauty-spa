@@ -635,21 +635,21 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 .hero__promo-price .tcard__price-orig  { font-size: 13px; }
 .hero__promo-time {
   position: absolute;
-  bottom: 20px;
+  bottom: 8px;
   left: 20px;
-  background: #fff;
-  color: #2a1a18;
+  background: linear-gradient(135deg, #c9a84c 0%, #e8866a 100%);
+  color: #fff;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: .4px;
-  padding: 10px 18px;
+  padding: 13px 22px;
   border-radius: 30px;
-  box-shadow: 0 4px 16px rgba(0,0,0,.18);
+  box-shadow: 0 4px 18px rgba(201,168,76,.45);
   z-index: 10;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   white-space: nowrap;
 }
 
