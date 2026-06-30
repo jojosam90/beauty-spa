@@ -1127,15 +1127,13 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   position: relative;
   border-radius: var(--r-lg);
   overflow: hidden;
-  min-height: 400px;
-  height: 100%;
+  height: 400px;
   box-shadow: var(--sh-md);
 }
 .contact__map iframe,
 #ebMap {
   width: 100%;
-  height: 100%;
-  min-height: 400px;
+  height: 400px;
   border: 0;
   display: block;
 }

@@ -646,7 +646,8 @@
   </script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WPeE=" crossorigin=""></script>
   <script>
-  (function() {
+  window.addEventListener('load', function() {
+    if (!document.getElementById('ebMap') || !window.L) return;
     var LAT = 1.30510, LNG = 103.84618;
     var map = L.map('ebMap', { scrollWheelZoom: false, zoomControl: true }).setView([LAT, LNG], 17);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -655,13 +656,13 @@
     }).addTo(map);
     var icon = L.divIcon({
       className: '',
-      html: '<div style="width:36px;height:36px;background:#25D366;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 2px 8px rgba(0,0,0,.35);border:3px solid #fff"></div>',
+      html: '<div style="width:36px;height:36px;background:#e8443a;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 2px 8px rgba(0,0,0,.35);border:3px solid #fff"></div>',
       iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -38]
     });
     L.marker([LAT, LNG], { icon: icon }).addTo(map)
       .bindPopup('<strong>EB Centre</strong><br>Blk 8, Selegie Road, #01-06<br>Singapore 180008')
       .openPopup();
-  })();
+  });
   </script>
 </body>
 </html>
