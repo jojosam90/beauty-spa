@@ -44,7 +44,7 @@
         </li>
 
         <li class="nav__item nav__item--cta">
-          <a href="${bp ? bp + 'index.html' : ''}#contact" class="btn btn--primary" data-i18n="btn_book">Book Now</a>
+          <a href="https://wa.me/6589410482?text=Hi%2C%20I%20would%20like%20to%20book%20a%20free%20consultation." target="_blank" rel="noopener noreferrer" class="btn btn--primary" data-i18n="btn_book">Book Now</a>
         </li>
       </ul>
     </nav>
