@@ -44,7 +44,7 @@
         </li>
 
         <li class="nav__item nav__item--cta">
-          <a href="https://wa.me/6589410482?text=Hi%2C%20I%20would%20like%20to%20book%20a%20free%20consultation." target="_blank" rel="noopener noreferrer" class="btn btn--primary" data-i18n="btn_book">Book Now</a>
+          <a href="https://wa.me/6589410482?text=Hi%20Linda%2C%20I'd%20like%20to%20make%20an%20appointment.%20What%20times%20are%20available%20today%3F%0A%E4%BD%A0%E5%A5%BDLinda%EF%BC%8C%E6%88%91%E6%83%B3%E9%A2%84%E7%BA%A6%2C%20%E8%AF%B7%E9%97%AE%E4%BB%8A%E5%A4%A9%E5%87%A0%E7%82%B9%E5%8F%AF%E4%BB%A5%EF%BC%9F" target="_blank" rel="noopener noreferrer" class="btn btn--primary" data-i18n="btn_book">Book Now</a>
         </li>
       </ul>
     </nav>
@@ -71,7 +71,7 @@
           <div class="footer__col">
             <h4 data-i18n="ft_col_contact">Contact</h4>
             <ul>
-              <li>Blk 8, Selegie Road, #01-06, Singapore 180008</li>
+              <li>Blk 8, Selegie Road, #01-06, Singapore 180008<br>(Rochor MRT Exit A)</li>
               <li>+65 8941 0482</li>
               <li data-i18n="ft_hrs1">Daily: 10.30am - 10.30pm (By appointment only)</li>
             </ul>
