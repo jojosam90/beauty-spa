@@ -654,10 +654,10 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 }
 
 /* Video section */
-.treatment-video-section { background: #c9a87a; }
-.treatment-video-section .section__tag { color: #6b3f1f; }
-.treatment-video-section h2 { color: #2a1a10; }
-.treatment-video-section .section-header p { color: #5a3a20; }
+.treatment-video-section { background: #FAF7F2; }
+.treatment-video-section .section__tag { color: var(--gold); }
+.treatment-video-section h2 { color: var(--dark); }
+.treatment-video-section .section-header p { color: var(--text-muted); }
 .treatment-video__wrap {
   position: relative;
   padding-top: 56.25%;
