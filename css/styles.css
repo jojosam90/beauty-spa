@@ -597,6 +597,62 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 .tcard__img--3 { background-image: url('../images/3.jpg'); background-size: cover; background-position: center top; }
 .tcard__img--4 { background-image: url('../images/4.jpg'); background-size: cover; background-position: center top; }
 
+/* Treatment card badges */
+.tcard__loved {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #fff;
+  color: #2a1a18;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.tcard__price {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: #c9a84c;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  pointer-events: none;
+  min-width: 90px;
+  text-align: center;
+}
+.tcard__price-label {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.tcard__price-main {
+  font-family: var(--font-head);
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a1008;
+  line-height: 1.1;
+  font-style: italic;
+}
+.tcard__price-orig {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: rgba(255,255,255,.8);
+  text-decoration: line-through;
+}
+
 .tcard__body { padding: 28px; }
 .tcard__body h3 {
   font-family: var(--font-head);
