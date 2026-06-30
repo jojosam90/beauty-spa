@@ -1141,6 +1141,7 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
   position: absolute;
   bottom: 16px;
   right: 16px;
+  z-index: 1000;
   background: #fff;
   color: var(--dark);
   font-size: 13px;
