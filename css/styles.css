@@ -654,18 +654,18 @@ input, textarea, select, button { font: inherit; border: none; outline: none; }
 }
 
 /* Video section */
-.treatment-video-section { background: #1d1410; }
-.treatment-video-section .section__tag { color: var(--gold); }
-.treatment-video-section h2 { color: #fff; }
-.treatment-video-section .section-header p { color: rgba(255,255,255,.65); }
+.treatment-video-section { background: #c9a87a; }
+.treatment-video-section .section__tag { color: #6b3f1f; }
+.treatment-video-section h2 { color: #2a1a10; }
+.treatment-video-section .section-header p { color: #5a3a20; }
 .treatment-video__wrap {
   position: relative;
   padding-top: 56.25%;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 12px 50px rgba(0,0,0,.45);
+  box-shadow: 0 12px 50px rgba(0,0,0,.25);
   max-width: 900px;
-  margin: 0 auto;
+  margin: 40px auto 0;
 }
 .treatment-video__wrap iframe {
   position: absolute;
