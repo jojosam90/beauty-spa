@@ -1,4 +1,4 @@
-﻿/* ==========================================================
+/* ==========================================================
    layout.js — shared header + footer injected on every page
    Set window.BASE_PATH before including this script:
      index.html  → BASE_PATH = ''

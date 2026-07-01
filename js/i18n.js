@@ -1,4 +1,4 @@
-﻿/* ==========================================================
+/* ==========================================================
    i18n.js — EN / ZH bilingual engine
    Usage: set window.BASE_PATH before this script loads.
    Lang stored in localStorage key "ec_lang".
